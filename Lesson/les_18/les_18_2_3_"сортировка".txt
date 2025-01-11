@@ -1,0 +1,21 @@
+1. работаем с таблицей orders
+SELECT * FROM orders
+WHERE ship_country NOT IN ('France', 'Germany', 'UK') # вывод и фильтрация таблицы orders
+ORDER BY ship_country                                 # сортировка таблицы по странам(country) по возврастанию
+
+2. работаем с определенными колонками таблицы
+SELECT company_name, country, city FROM customers
+ORDER BY country, city                                # сортировка таблицы по странам(country) и городам(city)
+
+3. поработаем с датами, разберем на примере таблицы orders
+SELECT * FROM orders # вывод всей таблицы
+SELECT MIN(order_data), MAX(order_data) FROM orders
+
+4. найдем среднее значение
+SELECT AVG(unit_price) FROM products
+# WHERE discontinued <> 1 # товар не снят с продажи
+WHERE discontinued = 1 # товар снят с продажи
+
+5. применим метод SUM для определения общей стоимости товара
+SELECT SUM(unit_price * units_in_stock) FROM products
+WHERE discontinued <> 1
