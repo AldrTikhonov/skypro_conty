@@ -1,0 +1,17 @@
+SQL-команды в pgAdmin4
+
+создать базу данных с названием test:
+CREATE DATABASE test;
+
+удалить базу данных:
+DROP DATABASE test;
+
+если база данные подключена к сеансу, то удаление не произойдет. Нужно отключить сеанс командами:
+SELECT pg_terminate_backend(pg_stat_activiy.pid)
+FROM pg_stat_activity
+WHERE pg_atat_activity.datname = 'test'
+  AND pid <> pg_backend_pid();
+
+после чего заново пытаемся удалить базу данных:
+DROP DATABASE test;
+
