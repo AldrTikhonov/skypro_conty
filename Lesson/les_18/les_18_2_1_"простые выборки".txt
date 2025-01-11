@@ -1,0 +1,58 @@
+""" работаем в pgAdmin4 """
+
+1. на локальном сервере (localhost) создаем БД northwind
+
+2. на запроснике (Query Tool) вставляем скопированный скрипт(northwind.sql, есть в загрузках этого ноута в Минт) и запускаем
+
+3. на чистом запроснике можно вывести
+
+всю таблицу командой:
+SELECT * FROM products;
+
+колонку product_name:
+SELECT prodect_name FROM products;
+
+несколько нужных колонок:
+SELECT product_name, unit_price, units_in_stock
+FROM products
+
+можно выполнять арифметические методы, типа +, -, *, /
+в нижеуказанном способе указано умножение количества товара на его цену, получаем новую колонку и называем ее total
+SELECT product_name, unit_price, units_in_stock, unit_price * units_in_stock as total
+FROM products;
+
+4. посмотрим другую таблицу
+SELECT *
+FROM employees;
+
+5. выведем колонку country(страна)
+SELECT country
+FROM employees
+
+6. выведем уникальные значения колонки country(страна)
+SELECT DISTINCT country
+FROM employees
+
+7. выведем уникальные пары страна(country) город(city)
+SELECT country, city
+FROM employees
+
+8. вывести сколько сотрудников
+SELECT COUNT (*)
+FROM employees
+
+9. выведем какое количество стран в таблице
+SELECT COUNT (DISTINCT country)
+FROM employees
+
+10. посмотрим еще 1 таблицу
+SELECT *
+FROM shippers
+
+11. выведем количество строк в таблице
+SELECT COUNT (*) as total
+FROM shippers
+
+12. выведем количество ордеров из таблицы orders
+SELECT COUNT (*) as total
+FROM orders
