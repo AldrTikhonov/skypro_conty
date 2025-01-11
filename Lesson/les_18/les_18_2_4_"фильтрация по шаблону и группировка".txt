@@ -1,0 +1,36 @@
+### оператор           |        функционал
+LIKE                   |фильтрация по заданному шаблону
+LIMIT                  |ограничение размера результирующей выборки
+GROUP BY               |группировка по значениям в колонке
+HAVING                 |фильтр на сгруппированные значения
+
+### ----- практика -------
+
+1. сначала выведем всю таблицу, а затем отсортируем и выведем строки где страны начинаются на А
+SELECT *
+FROM customers
+WHERE country LIKE 'A%'
+
+2. упростим решение, сразу отсортируем и сделаем вывод и группировку только уникальных стран
+SELECT DISTINCT country
+FROM customers
+WHERE country LIKE 'A%'
+ORDER BY country
+
+3. упорядочим по весу и выведем данные 10 строк из таблицы orders по убыванию
+SELECT *
+FROM orders
+ORDER BY freight DESC
+LIMIT 10
+
+4. выведем заказы, где регион известен
+SELECT *
+FROM orders
+WHERE ship_region IS NOT NULL
+ORDER BY freight DESC
+
+5. а теперь, где регион не известен
+SELECT *
+FROM orders
+WHERE ship_region IS NULL
+ORDER BY freight DESC
