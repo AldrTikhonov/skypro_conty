@@ -1,0 +1,44 @@
+создаем таблицу с названием postr:
+CREATE TABLE postr
+(
+    postr_id INT PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    content TEXT,
+    author INT REFERENCES user_acc(user_id) NOT NULL
+);
+
+в окне сайта pgAdmin4 нужно нажать кнопку выполнить (треугольник или f5) и обновить страничку(refresh) и далее ...
+
+добавим данные в таблицу построчно:
+INSERT INTO postr VALUES (1, "Happy New Year", "", 2);
+
+так же можно добавить сразу несколько данных:
+INSERT INTO postr VALUES
+(2, "My plans for 2025", "", 1);
+(3, "Lesson learner from 2025", "", 1);
+(4, "New Post!", "", 2);
+
+еще можно добавить следующим образом, но это уже в другой раз:
+INSERT INTO postr (postr_id, title, content, author) VALUES (%s, %s, %s, %s);
+
+показать получившуюся таблицу нужно командой:
+SELECT * FROM postr
+
+создаем еще 1 таблицу user_acc:
+CRAETE TABLE user_acc
+(
+    user_id INT PRIMARY KEY,
+    fullname VARCHAR(100) NOT NULL
+);
+
+заносим данные в таблицу:
+INSERT INTO user_acc VALUES
+(1. "Tom"),
+(2. "Jannet");
+
+сделаем выполнение и обновление:
+f5 and reflesh
+
+!!! произойдет ошибка потому, что во 1-х таблица postr уже создана и ее нужно удалить и
+создать по новой, но только после создания таблицы user_acc, потому что колонка author в postr
+ссылается на колонку user_id в user_acc)
