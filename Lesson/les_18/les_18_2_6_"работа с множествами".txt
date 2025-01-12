@@ -1,0 +1,35 @@
+1. выведем таблицу customers
+SELECT *
+FROM customers
+
+2. выведем еще одну таблицу с названием suppliers
+SELECT *
+FROM suppliers
+
+3. теперь выведем в обоих таблицах только названия стран
+SELECT country
+FROM customers
+
+SELECT country
+FROM suppliers
+
+4. объеденим обе таблицы, исключая повторения (команда DISTINCT)
+SELECT country
+FROM customers
+UNION
+SELECT country
+FROM suppliers
+
+5. выведем только те страны которые пересекаются в обоих таблицах
+SELECT country
+FROM customers
+INTERSECT
+SELECT country
+FROM suppliers
+
+6. есть оператор который вычитает множество из другого множества
+SELECT country
+FROM customers
+EXCEPT
+SELECT country
+FROM suppliers

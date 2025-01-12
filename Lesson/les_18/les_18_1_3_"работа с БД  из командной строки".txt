@@ -1,0 +1,58 @@
+ввод команды заключается в < >, а слева остается вывод из консоли
+
+1. подключиться к сервису
+user@Acer:~$ <sudo -i -u postgres>
+
+2. ввести пароль user
+[sudo] пароль для user:<ваш пароль>
+
+3. вход в консоль
+postgres@Acer:~$ <psql>
+
+4. вывод списка БД
+postgres=# <\l>
+
+5. выход из консоли
+postgres=# <\q>
+
+6. создаем новую БД
+postgres@Acer:~$ <createdb test_db>
+
+7. вход в консоль
+postgres@Acer:~$ <psql>
+
+8. опять вывод списка БД для проверки
+postgres=# <\l>
+
+9. выход из консоли
+postgres=# <\q>
+
+10. удалить БД
+postgres@Acer:~$ <dropdb test_db>
+
+11. вход в консоль
+postgres@Acer:~$ <psql>
+
+12. опять вывод списка БД для проверки
+postgres=# <\l>
+
+13. вывод списка пользователей
+postgres=# <\du>
+
+14. меняем пароль БД
+postgres=# <ALTER USER postgres WITH PASSWORD "ваш пароль">
+
+15. создаем нового пользователя
+postgres=# <CREATE USER username WITH PASSWORD "его пароль">
+
+16. наделяем пользователя правами суперпользователя
+postgres=# <ALTER USER username WITH SUPERUSER>
+
+17. удалить пользователя
+postgres=# <DROP USER username>
+
+18. посмотреть список пользователей
+postgres=# <\du>
+
+19. выход из консоли
+postgres=# <\q>
