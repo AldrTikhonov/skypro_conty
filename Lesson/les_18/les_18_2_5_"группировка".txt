@@ -1,0 +1,34 @@
+1. в этой таблице много стран и заказов, по-этому сгруппируем и выведем заказы в каждою страну
+SELECT ship_country, COUNT(*)
+FROM orders
+WHERE ship_country NOT IN ('Germany', 'USA') # фильтрация
+GROUP BY ship_country                        # группировка
+ORDER BY COUNT(*) DESC                       # сортировка
+
+### -------------------------------------------------------
+2. дополним фильтр условием, что убираются страны у которых количество заказов менее 30
+SELECT ship_country, COUNT(*)
+FROM orders
+WHERE ship_country NOT IN ('Germany', 'USA') # фильтрация
+HAVING COUNT(*) >= 30                        # сортировка
+GROUP BY ship_country                        # группировка
+ORDER BY COUNT(*) DESC                       # сортировка
+
+### --------------------------------------------------------
+3. отсортируем таблицу orders от строк, где отсутствуют регионы и сгруппируем какое количество
+- поэтапно
+1. выведем таблицу полностью
+SELECT *
+FROM orders
+
+2. выведем заказы, где есть регионы
+WHERE ship_region IS NOT NULL
+
+3. выведем на терминал определенные колонки и сгруппируем их отсортируем по убыванию количества заказов
+отфильтровать, где количество заказов меньше 10 и оставить на выводе консоли только страну USA
+SELECT ship_region, ship_country, COUNT(*)
+FROM orders
+WHERE ship_region IS NOT NULL AND ship_country = 'USA'
+HAVING COUNT(*) > 10
+GROUP BY ship_region, ship_country
+
