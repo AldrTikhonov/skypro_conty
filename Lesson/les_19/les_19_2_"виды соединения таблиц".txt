@@ -1,0 +1,33 @@
+1. выведем 2 таблицы
+
+SELECT * FROM categories:
+SELECT * FROM products;
+
+2. выведем обе таблицы сл. способом
+SELECT category_name, product_name
+FROM categories
+INNER JOIN products ON categories.category_id=products.category_id
+
+3. эту запись можно упростить, смотрите ниже, следует отметить порядок создания таблиц тут не имеет значения
+SELECT category_name, product_name
+FROM categories
+INNER JOIN products USING(category_id)
+
+4. теперь используем оператор LEFT
+SELECT category_name, product_name
+FROM categories
+LEFT JOIN products USING(category_id)
+
+WHERE product_name IS NULL # добавив эту команду выведем в консоль категорию в которой не указана продукты
+
+5. выведем скрипт с командой RIGHT
+SELECT category_name, product_name
+FROM categories
+RIGHT JOIN products USING(category_id)
+
+WHERE product_name IS NULL # добавив эту команду выведем в консоль категорию в которой не указана продукты
+
+6. выведем данные с помощью оператора FULL
+SELECT category_name, product_name
+FROM categories
+FULL JOIN products USING(category_id)

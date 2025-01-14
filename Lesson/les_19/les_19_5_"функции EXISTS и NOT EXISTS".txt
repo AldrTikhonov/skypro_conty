@@ -1,0 +1,17 @@
+1. откроем таблицу orders
+SELECT * FROM orders
+
+2. откроем таблицу employees
+SELECT * FROM employees
+
+3. выведем заказы чтобы сотрудники проживали там куда нужно доставить заказы
+SELECT * FROM orders
+WHERE EXISTS (SELECT 1 FROM employees WHERE orders.employee_id=employees.employee_id AND orders.ship_country=employees.country)
+
+4. выведем наоборот те заказы у которых проживание сотрудников и место доставки не совпадают
+SELECT * FROM orders
+WHERE NOT EXISTS (SELECT 1 FROM employees WHERE orders.employee_id=employees.employee_id AND orders.ship_country=employees.country)
+
+5. выведем сотрудников проживающих в USA
+SELECT * FROM employees
+WHERE country='USA'

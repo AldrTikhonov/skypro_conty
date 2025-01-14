@@ -1,0 +1,13 @@
+1. запишем верхнюю таблицу с помощью JOIN
+SELECT * FROM orders
+WHERE EXISTS (SELECT 1 FROM employees WHERE orders.employee_id=employees.employee_id AND orders.ship_country=employees.country)
+
+SELECT * FROM orders
+INNER JOIN employees USING(employee_id)
+WHERE orders.ship_country=employees.country
+
+2. из огромной полученной таблицы выведем необходимые нам колонки
+SELECT order_id, employee_id, ship_country, country AS employee_country
+FROM orders
+INNER JOIN employees USING(employee_id)
+WHERE orders.ship_country=employees.country
