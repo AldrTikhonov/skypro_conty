@@ -1,0 +1,26 @@
+1. выведем таблицу customers - компании
+SELECT *
+FROM customers
+
+2. выведем таблицу suppliers - поставщики
+SELECT *
+FROM suppliers
+
+3. выведем в новую таблицу те страны, где поставщики и компании зарегистрированы в общих странах ИСПОЛЬЗУЕТСЯ ПОДЗАПРОС
+SELECT company_name, country
+FROM customers
+WHERE country IN (SELECT country FROM suppliers)
+
+4. откроем таблицу orders
+SELECT *
+FROM orders
+
+5. выведем на экран только 10% от всей таблицы
+SELECT * FROM orders
+LIMIT (SELECT COUNT(*)/10 FROM orders)
+
+6. выведем только те продукты у которых цена выше средней
+SELECT product_name, unit_price
+FROM products
+WHERE unit_price > (SELECT AVG(unit_price) FROM products)
+ORDER BY unit_price

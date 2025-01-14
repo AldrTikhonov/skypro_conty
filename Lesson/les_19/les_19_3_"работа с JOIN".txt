@@ -1,0 +1,38 @@
+1. выведем таблицу  products
+SELECT *
+FROM products
+
+2. откроем таблицу suppliers
+SELECT *
+FROM suppliers
+
+3. выведем таблицу колонки product_name из products and supplier_id из suppliers
+SELECT product_name, suppliers.company_name
+FROM products
+INNER JOIN suppliers USING(supplier_id)
+
+4. откроем таблицу categories, чтобы увидеть как в этой таблице называется имя_котегории (category_name)
+SELECT *
+FROM categories
+
+5. дополним таблицу из пункта 3 колонкой category_id из таблицы categories
+SELECT product_name, categories.category_name, suppliers.company_name
+FROM products
+INNER JOIN suppliers USING(supplier_id)
+INNER JOIN categories USING(category_id)
+
+6. выведем среднюю цену категории, нужно будет сделать группировку по категориям и использовать вместо category_id, category_name
+SELECT category_name, AVG(unit_price) AS average_price
+FROM products
+INNER JOIN categories USING(category_id)
+GROUP BY category_name
+ORDER BY average_price DESC
+
+7. дополним таблицу пункта 6 условием (фильтрация), чтобы выводились на экран только те категории, которые больше 30,
+   кстати переопределение с операторами HAVING и ... не работают !!!!!
+SELECT category_name, AVG(unit_price) AS average_price
+FROM products
+INNER JOIN categories USING(category_id)
+GROUP BY category_name
+HAVING AVG(unit_price) > 30
+ORDER BY average_price DESC
