@@ -1,0 +1,50 @@
+(docker-py3.12) user@Acer:~/Docker$ docker pull redis ### команда (чтобы было видно) ------
+Using default tag: latest
+latest: Pulling from library/redis
+Digest: sha256:dbf3e4b6ad3ece9c733282ff3f16942ed754fdc4ea12332154f30a9a9b88c3af
+Status: Image is up to date for redis:latest
+docker.io/library/redis:latest
+(docker-py3.12) user@Acer:~/Docker$ docker run -d -p 6379:6379 redis ### команда (чтобы было видно) ------
+06e5bd3b02b663869a1278cde014509cd34ff19ed60671c87bf6c843a3dca7c4
+docker: Error response from daemon: driver failed programming external connectivity on endpoint adoring_galileo (8b8df1fb5c76217d91e219546613d7f5307b127c49866ddb9616a613d0b4fd1d): failed to bind port 0.0.0.0:6379/tcp: Error starting userland proxy: listen tcp4 0.0.0.0:6379: bind: address already in use.
+(docker-py3.12) user@Acer:~/Docker$ sudo lsof -i :6379 ### команда (чтобы было видно) ------
+[sudo] пароль для user:
+COMMAND   PID  USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+redis-ser 980 redis    6u  IPv4  10446      0t0  TCP localhost:redis (LISTEN)
+redis-ser 980 redis    7u  IPv6  10447      0t0  TCP ip6-localhost:redis (LISTEN)
+(docker-py3.12) user@Acer:~/Docker$ sudo kill 980 ### команда (чтобы было видно) ------
+(docker-py3.12) user@Acer:~/Docker$ sudo lsof -i :6379 ### команда (чтобы было видно) ------
+COMMAND    PID  USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+redis-ser 4500 redis    6u  IPv4  36489      0t0  TCP localhost:redis (LISTEN)
+redis-ser 4500 redis    7u  IPv6  36490      0t0  TCP ip6-localhost:redis (LISTEN)
+(docker-py3.12) user@Acer:~/Docker$ docker ps ### команда (чтобы было видно) ------
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+(docker-py3.12) user@Acer:~/Docker$ sudo kill 4500 ### команда (чтобы было видно) ------
+(docker-py3.12) user@Acer:~/Docker$ sudo lsof -i :6379 ### команда (чтобы было видно) ------
+COMMAND    PID  USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+redis-ser 4567 redis    6u  IPv4  36601      0t0  TCP localhost:redis (LISTEN)
+redis-ser 4567 redis    7u  IPv6  36602      0t0  TCP ip6-localhost:redis (LISTEN)
+(docker-py3.12) user@Acer:~/Docker$ sudo kill 4567 ### команда (чтобы было видно) ------
+(docker-py3.12) user@Acer:~/Docker$ sudo lsof -i :6379 ### команда (чтобы было видно) ------
+COMMAND    PID  USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+redis-ser 4594 redis    6u  IPv4  33702      0t0  TCP localhost:redis (LISTEN)
+redis-ser 4594 redis    7u  IPv6  33703      0t0  TCP ip6-localhost:redis (LISTEN)
+(docker-py3.12) user@Acer:~/Docker$ sudo kill 4594 ### команда (чтобы было видно) ------
+(docker-py3.12) user@Acer:~/Docker$ sudo lsof -i :6379 ### команда (чтобы было видно) ------
+COMMAND    PID  USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+redis-ser 4622 redis    6u  IPv4  36718      0t0  TCP localhost:redis (LISTEN)
+redis-ser 4622 redis    7u  IPv6  36719      0t0  TCP ip6-localhost:redis (LISTEN)
+(docker-py3.12) user@Acer:~/Docker$ docker run -d -p 6380:6379 redis ### команда (чтобы было видно) ------
+08a5114fe1939f90262742ef04f66da7990c0a03e9eb186d3a4513d401e6492b
+(docker-py3.12) user@Acer:~/Docker$ docker ps ### команда (чтобы было видно) ------
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                                         NAMES
+08a5114fe193   redis     "docker-entrypoint.s…"   20 seconds ago   Up 19 seconds   0.0.0.0:6380->6379/tcp, [::]:6380->6379/tcp   infallible_bohr
+(docker-py3.12) user@Acer:~/Docker$ docker stop 08a5114fe193 ### команда (чтобы было видно) ------
+08a5114fe193
+(docker-py3.12) user@Acer:~/Docker$ docker ps ### команда (чтобы было видно) ------
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+(docker-py3.12) user@Acer:~/Docker$ docker rm 08a5114fe193 ### команда (чтобы было видно) ------
+08a5114fe193
+(docker-py3.12) user@Acer:~/Docker$ docker ps ### команда (чтобы было видно) ------
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+(docker-py3.12) user@Acer:~/Docker$

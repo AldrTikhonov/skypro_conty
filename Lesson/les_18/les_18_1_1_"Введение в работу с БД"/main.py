@@ -1,5 +1,7 @@
-import psycopg2
 import csv
+
+import psycopg2
+
 
 def fill_table_from_csv(table_name, file_name):
     conn = psycopg2.connect(
@@ -23,6 +25,7 @@ def fill_table_from_csv(table_name, file_name):
     conn.commit()
     cursor.close()
     conn.close()
+
 
 def main():
     fill_table_from_csv('students', 'data/students.csv')

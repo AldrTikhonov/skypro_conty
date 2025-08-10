@@ -1,0 +1,19 @@
+(docker-py3.12) user@Acer:~/Docker$ docker run -d \   ### команда (чтобы было видно) ------
+> --name first-postgres \
+> -e POSTGRES_DB=postgres \
+> -e POSTGRES_USER=postgres \
+> -e POSTGRES_PASSWORD=postgres \
+> -e 6382:6379 \
+> postgres:16
+970f287aec003d0981e9a426465c41044c7c7d7ec57667ea1632c91a2218aac7
+(docker-py3.12) user@Acer:~/Docker$
+(docker-py3.12) user@Acer:~/Docker$ docker ps   ### команда (чтобы было видно) ------
+CONTAINER ID   IMAGE         COMMAND                  CREATED          STATUS          PORTS      NAMES
+970f287aec00   postgres:16   "docker-entrypoint.s…"   17 seconds ago   Up 17 seconds   5432/tcp   first-postgres
+(docker-py3.12) user@Acer:~/Docker$ psql -h localhost -U postgres -d postgres   ### команда (чтобы было видно) ------
+Password for user postgres:
+psql (16.9 (Ubuntu 16.9-0ubuntu0.24.04.1))
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, compression: off)
+Type "help" for help.
+
+postgres=#

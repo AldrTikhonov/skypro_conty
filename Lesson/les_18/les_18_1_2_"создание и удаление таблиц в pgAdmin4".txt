@@ -25,7 +25,7 @@ INSERT INTO postr (postr_id, title, content, author) VALUES (%s, %s, %s, %s);
 SELECT * FROM postr
 
 создаем еще 1 таблицу user_acc:
-CRAETE TABLE user_acc
+CREATE TABLE user_acc
 (
     user_id INT PRIMARY KEY,
     fullname VARCHAR(100) NOT NULL

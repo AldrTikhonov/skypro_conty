@@ -1,7 +1,7 @@
 """
 Задача: 'Ведение в работу с базами данных'
 
-1.s= Создать БД courses из консоли используя утилиту psql
+1. Создать БД courses из консоли используя утилиту psql
 2. Создать три таблицы в БД courses
 
     * Таблица students должна содержать следующие столбцы - id(целое число),
@@ -50,7 +50,7 @@
 # 	id int PRIMARY KEY,
 # 	first_name VARCHAR(100) NOT NULL,
 # 	last_name VARCHAR(100) NOT NULL,
-# 	emal VARCHAR(255)
+# 	email VARCHAR(255)
 # );
 #
 # CREATE TABLE instructors(

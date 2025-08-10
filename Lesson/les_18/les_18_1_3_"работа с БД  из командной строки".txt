@@ -16,7 +16,7 @@ postgres=# <\l>
 postgres=# <\q>
 
 6. создаем новую БД
-postgres@Acer:~$ <createdb test_db>
+postgres@Acer:~$ <create db test_db>
 
 7. вход в консоль
 postgres@Acer:~$ <psql>
@@ -28,7 +28,7 @@ postgres=# <\l>
 postgres=# <\q>
 
 10. удалить БД
-postgres@Acer:~$ <dropdb test_db>
+postgres@Acer:~$ <drop db test_db>
 
 11. вход в консоль
 postgres@Acer:~$ <psql>

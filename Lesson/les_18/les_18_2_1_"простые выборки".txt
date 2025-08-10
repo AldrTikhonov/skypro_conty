@@ -10,7 +10,7 @@
 SELECT * FROM products;
 
 колонку product_name:
-SELECT prodect_name FROM products;
+SELECT product_name FROM products;
 
 несколько нужных колонок:
 SELECT product_name, unit_price, units_in_stock
